@@ -30,7 +30,7 @@ module.exports.task = ({
 
 \\title{${title}}
 \\date{May 28 2019}
-\\author{${name}${ student ? `\\\\${student}` : ''}
+\\author{${name}${ student ? `\\\\${student}` : ''}}
 
 \\begin{document}
 

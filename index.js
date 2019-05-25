@@ -1,8 +1,8 @@
 const inquirer = require('inquirer');
 const chalk = require('chalk');
-const shell = require('shelljs');
 const fs = require('fs');
 const path = require('path');
+const { execSync } = require('child_process');
 
 const { gitignore } = require('./templates/gitignore');
 const { make } = require('./templates/make');
@@ -68,24 +68,24 @@ const run = async () => {
     fs.writeFileSync(`${folder}/questions/q_${i}.tex`, question(data));
   }
 
-  fs.copyFileSync(path.resolve(__dirname, '..', 'example-sketch,png'), path.resolve(folder, 'graphs', 'example-sketch.png'));
+  fs.copyFileSync(path.resolve(__dirname, '..', 'example-sketch.png'), path.resolve(folder, 'graphs', 'example-sketch.png'));
 
-  shell.cd(folder);
-
-  if (shell.exec(`git init && git add -a && git commit -m " ${data.title}"`).code !== 0) {
+  try {
+    execSync(`git init && git add . && git commit -m " ${data.title}"`, { cwd: folder });
+  } catch (e) {
     console.error(chalk.yellow(`
       Failed to add files to git repo!
       Your project had still been created, but you may have to manually add the files.
     `));
   }
 
-  if (shell.exec(`make`).code !== 0) {
+  try {
+    execSync(`make`, { cwd: folder });
+  } catch (e) {
     console.error(chalk.yellow(`
       Failed to compile! Please make sure you have both "make" and "pdflatex" installed.
     `));
   }
-
-  shell.cd(previous);
 
   console.log(chalk.white(`
     Project bootstrap complete.
