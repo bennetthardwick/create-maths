@@ -7,11 +7,6 @@
   </p>
 </p>
 
-<p align="center">
-  <img src="/static/example.gif" width="400" alt="Staggered">
-</p>
-
-
 [![NPM](https://img.shields.io/npm/v/create-maths.svg)](https://www.npmjs.com/package/create-maths)
 
 ## Usage
