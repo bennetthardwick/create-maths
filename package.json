@@ -1,0 +1,17 @@
+{
+  "name": "create-maths",
+  "version": "1.0.0",
+  "description": "A CLI that bootstraps latex maths projects.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "chalk": "^2.4.2",
+    "inquirer": "^6.3.1",
+    "shelljs": "^0.8.3"
+  }
+}
