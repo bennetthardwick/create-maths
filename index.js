@@ -65,7 +65,7 @@ const run = async () => {
   fs.writeFileSync(`${folder}/makefile`, make(data));
 
   for (let i = 1; i <= Number(data.questions); i++) {
-    fs.writeFileSync(`${folder}/questions/q_${i}.tex`, question(data));
+    fs.writeFileSync(`${folder}/questions/q_${i}.tex`, question({ number: i }));
   }
 
   fs.copyFileSync(path.resolve(__dirname, '..', 'example-sketch.png'), path.resolve(folder, 'graphs', 'example-sketch.png'));
