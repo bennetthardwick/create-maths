@@ -1,6 +1,6 @@
 {
   "name": "create-maths",
-  "version": "1.0.12",
+  "version": "1.0.13",
   "description": "A CLI that bootstraps latex maths projects.",
   "main": "dist/index.js",
   "scripts": {
