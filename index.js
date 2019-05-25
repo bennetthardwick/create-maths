@@ -64,7 +64,7 @@ const run = async () => {
   fs.writeFileSync(`${folder}/.gitignore`, gitignore(data));
   fs.writeFileSync(`${folder}/makefile`, make(data));
 
-  for (let i = 1; i <= data.questions; i++) {
+  for (let i = 1; i <= Number(data.questions); i++) {
     fs.writeFileSync(`${folder}/questions/q_${i}.tex`, question(data));
   }
 
