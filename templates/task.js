@@ -1,11 +1,5 @@
-module.exports.task = ({
-  name,
-  student,
-  title,
-  date,
-  questions
-}) =>
-`\\documentclass{article}
+export const task = ({ name, student, title, date, questions }) =>
+  `\\documentclass{article}
 
 \\usepackage[margin=0.8in]{geometry}
 \\usepackage{amsmath,amsthm,amssymb}
@@ -26,11 +20,11 @@ module.exports.task = ({
 \\renewcommand{\\headrulewidth}{0pt} % no line in header area
 
 \\fancyfoot[LE,RO]{\\thepage}
-\\fancyfoot[RE,LO]{${name}${ student ? ` - ${student}` : ''}}
+\\fancyfoot[RE,LO]{${name}${student ? ` - ${student}` : ""}}
 
 \\title{${title}}
-\\date{May 28 2019}
-\\author{${name}${ student ? `\\\\${student}` : ''}}
+\\date{${date}}
+\\author{${name}${student ? `\\\\${student}` : ""}}
 
 \\begin{document}
 
@@ -38,7 +32,9 @@ module.exports.task = ({
 
   \\pagebreak
 
-  ${(new Array(questions)).fill(0).map((_, i) => `\\input{./questions/q_${i + 1}}\n`)}
+  ${new Array(Number(questions))
+    .fill(0)
+    .map((_, i) => `\\input{./questions/q_${i + 1}}\n`)}
 
 \\end{document}
 `;
